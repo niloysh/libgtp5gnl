@@ -38,6 +38,12 @@ void gtp5g_pdr_set_role_addr_ipv4(struct gtp5g_pdr *pdr, struct in_addr *role_ad
 /* Not in 3GPP spec, just used for buffering */
 void gtp5g_pdr_set_unix_sock_path(struct gtp5g_pdr *pdr, const char *unix_sock_path);
 
+/* Not in 3GPP spec, used for monitoring */
+void gtp5g_pdr_set_dl_pkt_cnt(struct gtp5g_pdr *pdr, uint32_t pkt_cnt);
+void gtp5g_pdr_set_ul_pkt_cnt(struct gtp5g_pdr *pdr, uint32_t pkt_cnt);
+void gtp5g_pdr_set_dl_byte_cnt(struct gtp5g_pdr *pdr, uint32_t byte_cnt);
+void gtp5g_pdr_set_ul_byte_cnt(struct gtp5g_pdr *pdr, uint32_t byte_cnt);
+
 void gtp5g_pdr_set_sdf_filter_description(struct gtp5g_pdr *pdr, const char *rule_str);
 void gtp5g_pdr_set_tos_traffic_class(struct gtp5g_pdr *pdr, uint16_t tos_traffic_class);
 void gtp5g_pdr_set_security_param_idx(struct gtp5g_pdr *pdr, uint32_t security_param_idx);
@@ -52,6 +58,12 @@ uint8_t  *gtp5g_pdr_get_outer_header_removal(struct gtp5g_pdr *pdr);
 struct in_addr *gtp5g_pdr_get_ue_addr_ipv4(struct gtp5g_pdr *pdr);
 uint32_t *gtp5g_pdr_get_local_f_teid_teid(struct gtp5g_pdr *pdr);
 struct in_addr *gtp5g_pdr_get_local_f_teid_gtpu_addr_ipv4(struct gtp5g_pdr *pdr);
+
+/* Not in 3GPP spec, used for monitoring */
+uint32_t* gtp5g_pdr_get_ul_pkt_cnt(struct gtp5g_pdr* pdr);
+uint32_t* gtp5g_pdr_get_dl_pkt_cnt(struct gtp5g_pdr* pdr);
+uint32_t* gtp5g_pdr_get_ul_byte_cnt(struct gtp5g_pdr* pdr);
+uint32_t* gtp5g_pdr_get_dl_byte_cnt(struct gtp5g_pdr* pdr);
 
 /**
  * SDF 

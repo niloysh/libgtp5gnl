@@ -917,4 +917,44 @@ void gtp5g_qer_free(struct gtp5g_qer *qer)
 }
 EXPORT_SYMBOL(gtp5g_qer_free);
 
+/* Not in 3GPP spec, used for monitoring */
+void gtp5g_pdr_set_dl_pkt_cnt(struct gtp5g_pdr *pdr, uint32_t pkt_cnt) {
+    pdr->dl_pkt_cnt = pkt_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_set_dl_pkt_cnt);
+
+void gtp5g_pdr_set_ul_pkt_cnt(struct gtp5g_pdr *pdr, uint32_t pkt_cnt) {
+    pdr->ul_pkt_cnt = pkt_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_set_ul_pkt_cnt);
+
+void gtp5g_pdr_set_dl_byte_cnt(struct gtp5g_pdr *pdr, uint32_t byte_cnt) {
+    pdr->dl_byte_cnt = byte_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_set_dl_byte_cnt);
+
+void gtp5g_pdr_set_ul_byte_cnt(struct gtp5g_pdr *pdr, uint32_t byte_cnt) {
+    pdr->ul_byte_cnt = byte_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_set_ul_byte_cnt);
+
+uint32_t* gtp5g_pdr_get_ul_pkt_cnt(struct gtp5g_pdr* pdr) {
+    return &pdr->ul_pkt_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_get_ul_pkt_cnt);
+
+uint32_t* gtp5g_pdr_get_dl_pkt_cnt(struct gtp5g_pdr* pdr) {
+    return &pdr->dl_pkt_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_get_dl_pkt_cnt);
+
+uint32_t* gtp5g_pdr_get_ul_byte_cnt(struct gtp5g_pdr* pdr) {
+    return &pdr->ul_byte_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_get_ul_byte_cnt);
+
+uint32_t* gtp5g_pdr_get_dl_byte_cnt(struct gtp5g_pdr* pdr) {
+    return &pdr->dl_byte_cnt;
+}
+EXPORT_SYMBOL(gtp5g_pdr_get_dl_byte_cnt);
 

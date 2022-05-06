@@ -138,6 +138,12 @@ struct gtp5g_pdr {
 
     /* Not in 3GPP spec, just used for buffering */
     char *unix_sock_path;
+
+    /* Not in 3GPP spec, used for monitoring */
+    uint32_t ul_pkt_cnt;
+    uint32_t dl_pkt_cnt;
+    uint32_t ul_byte_cnt;
+    uint32_t dl_byte_cnt;
 };
 
 #endif

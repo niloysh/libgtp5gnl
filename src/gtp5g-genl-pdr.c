@@ -752,6 +752,12 @@ void gtp5g_print_pdr(struct gtp5g_pdr *pdr)
         inet_ntop(AF_INET, pdr->role_addr_ipv4, buf, sizeof(buf));
         printf("%s- GTP-U IPv4: %s (For routing)\n", indent_str, buf);
     }
+
+    /* Not in 3GPP spec, used for monitoring */
+    printf("%s- UL PACKET COUNT: %u\n", indent_str, pdr->ul_pkt_cnt);
+    printf("%s- DL PACKET COUNT: %u\n", indent_str, pdr->dl_pkt_cnt);
+    printf("%s- UL BYTE COUNT: %u\n", indent_str, pdr->ul_byte_cnt);
+    printf("%s- DL BYTE COUNT: %u\n", indent_str, pdr->dl_byte_cnt);
 }
 EXPORT_SYMBOL(gtp5g_print_pdr);
 
@@ -872,6 +878,23 @@ static int genl_gtp5g_attr_cb(const struct nlmsghdr *nlh, void *data)
     if (pdr_tb[GTP5G_PDR_UNIX_SOCKET_PATH]) {
         pstr = mnl_attr_get_str(pdr_tb[GTP5G_PDR_UNIX_SOCKET_PATH]);
         gtp5g_pdr_set_unix_sock_path(pdr, pstr);
+    }
+
+    /* Not in 3GPP spec, used for monitoring */
+    if (pdr_tb[GTP5G_PDR_UL_PKT_CNT]) {
+        gtp5g_pdr_set_ul_pkt_cnt(pdr, mnl_attr_get_u32(pdr_tb[GTP5G_PDR_UL_PKT_CNT]));
+    }
+
+    if (pdr_tb[GTP5G_PDR_DL_PKT_CNT]) {
+        gtp5g_pdr_set_dl_pkt_cnt(pdr, mnl_attr_get_u32(pdr_tb[GTP5G_PDR_DL_PKT_CNT]));
+    }
+
+    if (pdr_tb[GTP5G_PDR_UL_BYTE_CNT]) {
+        gtp5g_pdr_set_ul_byte_cnt(pdr, mnl_attr_get_u32(pdr_tb[GTP5G_PDR_UL_BYTE_CNT]));
+    }
+
+    if (pdr_tb[GTP5G_PDR_DL_BYTE_CNT]) {
+        gtp5g_pdr_set_dl_byte_cnt(pdr, mnl_attr_get_u32(pdr_tb[GTP5G_PDR_DL_BYTE_CNT]));
     }
 
     return MNL_CB_OK;

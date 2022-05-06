@@ -41,12 +41,19 @@ enum gtp5g_pdr_attrs {
 
     GTP5G_PDR_QER_ID,
 
+    /* Not in 3GPP spec, used for monitoring */
+    GTP5G_PDR_UL_PKT_CNT,
+    GTP5G_PDR_DL_PKT_CNT,
+    GTP5G_PDR_UL_BYTE_CNT,
+    GTP5G_PDR_DL_BYTE_CNT,
+
     /* Add newly supported feature ON ABOVE
      * for compatability with older version of
      * free5GC's UPF or gtp5g
      * */
 
     __GTP5G_PDR_ATTR_MAX,
+
 };
 #define GTP5G_PDR_ATTR_MAX (__GTP5G_PDR_ATTR_MAX - 1)
 
